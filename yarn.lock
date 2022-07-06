@@ -7193,6 +7193,11 @@ uuid@^8.3.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.1.tgz#2ba2e6ca000da60fce5a196954ab241131e05a31"
   integrity sha512-FOmRr+FmWEIG8uhZv6C2bTgEVXsHk08kE7mPlrBbEe+c3r9pjceVPgupIfNIhc4yx55H69OXANrUaSuu9eInKg==
 
+v8-android-nointl@~10.100.0:
+  version "10.100.1"
+  resolved "https://registry.yarnpkg.com/v8-android-nointl/-/v8-android-nointl-10.100.1.tgz#1a74a446625b12e56cca70b701046198d0b00381"
+  integrity sha512-W8cPgewnWbtR56TVxqerBMdcUq/X+aPjbeSH38EbB/fUZCHh4+SrGjtZwICg94JszZ47Jg+glGNT6Et/YQF/GQ==
+
 v8-compile-cache@^2.0.3:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.1.0.tgz#e14de37b31a6d194f5690d67efc4e7f6fc6ab30e"
