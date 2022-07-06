@@ -137,6 +137,30 @@ final def prepareLibevent = tasks.register("prepareLibevent", PrepareLibeventTas
     it.outputDir.set(new File(thirdPartyNdkDir, "libevent"))
 }
 
+final def v8Variant = "v8-android-nointl"
+
+task prepareV8(dependsOn: createNativeDepsDirectories, type: Copy) {
+    def v8PackagePath = findNodeModulePath(projectDir, v8Variant)
+    if (!v8PackagePath) {
+        throw new GradleScriptException("Could not find the $v8Variant npm package", null)
+    }
+
+    def headerFiles = fileTree("$v8PackagePath/dist").matching({ it.include "**/include/**" })
+
+    def v8AAR = fileTree(v8PackagePath).matching({ it.include "**/v8-android/**/*.aar" }).singleFile
+    if (!v8AAR.exists()) {
+        throw new GradleScriptException("The $v8Variant npm package is missing \"v8-android-*.aar\"", null)
+    }
+
+    def soFiles = zipTree(v8AAR).matching({ it.include "**/*.so" })
+
+    from headerFiles
+    from soFiles
+    from "src/main/jni/third-party/v8/CMakeLists.txt"
+    includeEmptyDirs(false)
+    into "$thirdPartyNdkDir/v8"
+}
+
 task downloadGlog(dependsOn: createNativeDepsDirectories, type: Download) {
     src("https://github.com/google/glog/archive/v${GLOG_VERSION}.tar.gz")
     onlyIfNewer(true)
@@ -331,7 +355,7 @@ android {
         }
     }
 
-    preBuild.dependsOn(prepareJSC, prepareBoost, prepareDoubleConversion, prepareFmt, prepareFolly, prepareGlog, prepareLibevent, extractNativeDependencies)
+    preBuild.dependsOn(prepareJSC, prepareV8, prepareBoost, prepareDoubleConversion, prepareFmt, prepareFolly, prepareGlog, prepareLibevent, extractNativeDependencies)
     preBuild.dependsOn("generateCodegenArtifactsFromSchema")
 
     sourceSets.main {
@@ -342,6 +366,9 @@ android {
             exclude("com/facebook/react/processing")
             exclude("com/facebook/react/module/processing")
         }
+
+        def v8PackagePath = findNodeModulePath(projectDir, v8Variant)
+        assets.srcDirs += [ "$v8PackagePath/dist/snapshot_blob" ]
     }
 
     lintOptions {
