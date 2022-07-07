@@ -41,3 +41,23 @@ target_link_libraries(jscruntime folly_runtime jsc glog)
 # TODO: Remove this flag when ready.
 # Android has this enabled by default, but the flag is still needed for iOS.
 target_compile_options(jscruntime PRIVATE -DRN_FABRIC_ENABLED)
+
+##################
+### v8runtime ####
+##################
+
+file(GLOB v8runtime_SRC CONFIGURE_DEPENDS v8runtime/*.cpp)
+add_library(v8runtime STATIC ${v8runtime_SRC})
+
+target_include_directories(v8runtime PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_link_libraries(v8runtime
+        reactnative
+        folly_runtime
+        v8
+        glog)
+
+# arm64-v8a, x86_64
+if(${ANDROID_ABI} MATCHES "64(-v8a)?$")
+        target_compile_options(v8runtime PRIVATE -DV8_COMPRESS_POINTERS)
+endif()
