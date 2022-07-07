@@ -39,3 +39,27 @@ LOCAL_SHARED_LIBRARIES := libfolly_json libjsc glog
 LOCAL_CFLAGS += -DRN_FABRIC_ENABLED
 
 include $(BUILD_STATIC_LIBRARY)
+
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := v8runtime
+
+LOCAL_SRC_FILES := $(wildcard $(LOCAL_PATH)/v8runtime/*.cpp)
+LOCAL_SRC_FILES := $(subst $(LOCAL_PATH)/,,$(LOCAL_SRC_FILES))
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
+
+LOCAL_CFLAGS := -fexceptions -frtti -O3
+
+ifeq ($(TARGET_ARCH_ABI), arm64-v8a)
+  LOCAL_CFLAGS += -DV8_COMPRESS_POINTERS
+else ifeq ($(TARGET_ARCH_ABI), x86_64)
+  LOCAL_CFLAGS += -DV8_COMPRESS_POINTERS
+endif
+
+LOCAL_STATIC_LIBRARIES := reactnative
+LOCAL_SHARED_LIBRARIES := libfolly_json libv8 glog
+
+include $(BUILD_STATIC_LIBRARY)
