@@ -13,7 +13,7 @@ import android.os.Build;
 import com.facebook.jni.HybridData;
 import com.facebook.react.bridge.JavaScriptExecutor;
 import com.facebook.soloader.SoLoader;
-import io.csie.kudo.reactnative.v8.BuildConfig;
+//import io.csie.kudo.reactnative.v8.BuildConfig;
 import java.io.File;
 
 public class V8Executor extends JavaScriptExecutor {
@@ -42,10 +42,11 @@ public class V8Executor extends JavaScriptExecutor {
   }
 
   private static String loadDefaultSnapshotBlobPath() {
-    if (BuildConfig.V8_USE_SNAPSHOT) {
-      return "assets://" + Build.SUPPORTED_ABIS[0] + "/snapshot_blob.bin";
-    }
-    return "";
+    // if (BuildConfig.V8_USE_SNAPSHOT) {
+    //   return "assets://" + Build.SUPPORTED_ABIS[0] + "/snapshot_blob.bin";
+    // }
+    // return "";
+    return "assets://" + Build.SUPPORTED_ABIS[0] + "/snapshot_blob.bin";
   }
 
   private static String loadDefaultCodecachePath(

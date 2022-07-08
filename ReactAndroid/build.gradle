@@ -319,6 +319,7 @@ android {
 
                 targets "reactnativejni",
                     "jscexecutor",
+                    "v8executor",
                     "jsijniprofiler",
                     "reactnativeblob",
                     "reactperfloggerjni",
