@@ -23,6 +23,7 @@ import com.facebook.react.bridge.JSIModuleProvider;
 import com.facebook.react.bridge.JSIModuleSpec;
 import com.facebook.react.bridge.JSIModuleType;
 import com.facebook.react.bridge.JavaScriptContextHolder;
+import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.UIManager;
@@ -33,12 +34,14 @@ import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.module.model.ReactModuleInfo;
 import com.facebook.react.module.model.ReactModuleInfoProvider;
+import com.facebook.react.modules.systeminfo.AndroidInfoHelpers;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.react.uiapp.component.MyNativeViewManager;
 import com.facebook.react.uimanager.ViewManager;
 import com.facebook.react.uimanager.ViewManagerRegistry;
 import com.facebook.react.views.text.ReactFontManager;
 import com.facebook.soloader.SoLoader;
+import io.csie.kudo.reactnative.v8.executor.V8ExecutorFactory;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,6 +57,16 @@ public class RNTesterApplication extends Application implements ReactApplication
         @Override
         public String getJSMainModuleName() {
           return "packages/rn-tester/js/RNTesterApp.android";
+        }
+
+        @Override
+        protected JavaScriptExecutorFactory getJavaScriptExecutorFactory() {
+          return new V8ExecutorFactory(
+            getApplicationContext(),
+            getPackageName(),
+            AndroidInfoHelpers.getFriendlyDeviceName(),
+            getUseDeveloperSupport()
+          );
         }
 
         @Override
