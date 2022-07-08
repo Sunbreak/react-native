@@ -49,7 +49,7 @@ target_compile_options(jscruntime PRIVATE -DRN_FABRIC_ENABLED)
 file(GLOB v8runtime_SRC CONFIGURE_DEPENDS v8runtime/*.cpp)
 add_library(v8runtime STATIC ${v8runtime_SRC})
 
-target_include_directories(v8runtime PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(v8runtime PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/v8runtime)
 
 target_link_libraries(v8runtime
         reactnative
