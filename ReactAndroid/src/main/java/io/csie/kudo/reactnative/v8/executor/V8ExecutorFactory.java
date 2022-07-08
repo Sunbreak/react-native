@@ -12,7 +12,7 @@ import android.content.res.AssetManager;
 import androidx.annotation.Nullable;
 import com.facebook.react.bridge.JavaScriptExecutor;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
-import io.csie.kudo.reactnative.v8.BuildConfig;
+//import io.csie.kudo.reactnative.v8.BuildConfig;
 import java.io.File;
 
 public class V8ExecutorFactory implements JavaScriptExecutorFactory {
@@ -35,7 +35,7 @@ public class V8ExecutorFactory implements JavaScriptExecutorFactory {
     mConfig.appName = appName;
     mConfig.deviceName = deviceName;
     mConfig.enableInspector = useDeveloperSupport;
-    mConfig.codecacheMode = BuildConfig.V8_CACHE_MODE;
+    mConfig.codecacheMode = V8RuntimeConfig.CODECACHE_MODE_NONE; //BuildConfig.V8_CACHE_MODE;
   }
 
   public V8ExecutorFactory(
@@ -76,11 +76,11 @@ public class V8ExecutorFactory implements JavaScriptExecutorFactory {
     }
     final boolean hasCache =
         new File(context.getCodeCacheDir(), "v8codecache.bin").exists();
-    if (BuildConfig.V8_CACHE_MODE ==
-            V8RuntimeConfig.CODECACHE_MODE_NORMAL_WITH_STUB_BUNDLE &&
-        hasCache) {
-      return "stub.bundle";
-    }
+    // if (BuildConfig.V8_CACHE_MODE ==
+    //         V8RuntimeConfig.CODECACHE_MODE_NORMAL_WITH_STUB_BUNDLE &&
+    //     hasCache) {
+    //   return "stub.bundle";
+    // }
     return null;
   }
 }

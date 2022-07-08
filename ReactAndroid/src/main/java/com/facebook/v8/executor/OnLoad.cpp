@@ -17,7 +17,7 @@
 #include <react/jni/JavaScriptExecutorHolder.h>
 
 #include "V8ExecutorFactory.h"
-#include "V8RuntimeConfig.h"
+#include "v8runtime/V8RuntimeConfig.h"
 
 namespace jni = facebook::jni;
 namespace jsi = facebook::jsi;

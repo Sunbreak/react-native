@@ -147,6 +147,7 @@ $(call import-module,callinvoker)
 $(call import-module,reactperflogger)
 $(call import-module,hermes)
 $(call import-module,runtimeexecutor)
+$(call import-module,v8)
 $(call import-module,react/renderer/runtimescheduler)
 $(call import-module,react/nativemodule/core)
 
@@ -164,6 +165,7 @@ include $(REACT_SRC_DIR)/common/mapbuffer/jni/Android.mk
 include $(REACT_SRC_DIR)/jscexecutor/Android.mk
 include $(REACT_SRC_DIR)/../hermes/reactexecutor/Android.mk
 include $(REACT_SRC_DIR)/../hermes/instrumentation/Android.mk
+include $(REACT_SRC_DIR)/../v8/executor/Android.mk
 include $(REACT_SRC_DIR)/modules/blob/jni/Android.mk
 
 include $(REACT_GENERATED_SRC_DIR)/codegen/jni/Android.mk

@@ -9,7 +9,7 @@
 #pragma once
 
 #include <jsireact/JSIExecutor.h>
-#include "V8RuntimeConfig.h"
+#include "v8runtime/V8RuntimeConfig.h"
 
 namespace rnv8 {
 
