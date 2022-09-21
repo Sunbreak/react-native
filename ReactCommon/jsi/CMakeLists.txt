@@ -61,3 +61,5 @@ target_link_libraries(v8runtime
 if(${ANDROID_ABI} MATCHES "64(-v8a)?$")
         target_compile_options(v8runtime PRIVATE -DV8_COMPRESS_POINTERS)
 endif()
+
+#target_compile_options(v8runtime PRIVATE -Wno-unused-variable)
