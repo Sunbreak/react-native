@@ -13,6 +13,8 @@ plugins {
     id("maven-publish")
 }
 
+apply from: 'publish_hermes.gradle'
+
 group = "com.facebook.react"
 version = parent.publishing_version
 

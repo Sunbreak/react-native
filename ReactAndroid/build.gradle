@@ -18,6 +18,8 @@ plugins {
     id("de.undercouch.download")
 }
 
+apply from: 'publish_react.gradle'
+
 import com.facebook.react.tasks.internal.*
 
 import java.nio.file.Paths
