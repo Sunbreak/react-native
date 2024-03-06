@@ -265,3 +265,5 @@ publishing {
         }
     }
 }
+
+apply from: 'publish_hermes.gradle'

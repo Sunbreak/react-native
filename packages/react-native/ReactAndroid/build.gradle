@@ -763,3 +763,5 @@ publishing {
         }
     }
 }
+
+apply from: 'publish_react.gradle'

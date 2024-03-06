@@ -1,0 +1,29 @@
+/**
+ * 查看所有任务：./gradlew tasks --all
+ * 查看publish任务：./gradlew :packages:react-native:ReactAndroid:publish --dry-run
+ * local发布到MavenLocal仓库：./gradlew :packages:react-native:ReactAndroid:publishLocalPublicationToMavenLocalRepository
+ */
+
+apply plugin: 'maven-publish'
+
+def libGroup = 'com.example.android'
+def libArtifactId = 'react-native'
+def libVersion = '0.72.5-local' //如果要改版本号，改这里
+
+// https://developer.android.com/studio/build/maven-publish-plugin?hl=zh-cn
+afterEvaluate {
+    publishing {
+        publications {
+            local(MavenPublication) {
+                from components.default
+
+                groupId = libGroup
+                artifactId = libArtifactId
+                version = libVersion
+            }
+        }
+        repositories {
+            mavenLocal()
+        }
+    }
+}
