@@ -150,7 +150,6 @@ public class ReactAccessibilityDelegate extends ExploreByTouchHelper {
     SCROLLBAR,
     SEARCHBOX,
     SEPARATOR,
-    SLIDER,
     SPINBUTTON,
     STATUS,
     SUMMARY,
@@ -218,7 +217,6 @@ public class ReactAccessibilityDelegate extends ExploreByTouchHelper {
     SCROLLVIEW,
     HORIZONTALSCROLLVIEW,
     VIEWGROUP,
-    WEBVIEW,
     DRAWERLAYOUT,
     SLIDINGDRAWER,
     ICONMENU,
@@ -270,8 +268,6 @@ public class ReactAccessibilityDelegate extends ExploreByTouchHelper {
           return "com.android.internal.view.menu.IconMenuView";
         case VIEWGROUP:
           return "android.view.ViewGroup";
-        case WEBVIEW:
-          return "android.webkit.WebView";
         case NONE:
         case LINK:
         case SUMMARY:
@@ -345,8 +341,6 @@ public class ReactAccessibilityDelegate extends ExploreByTouchHelper {
           return AccessibilityRole.SCROLLBAR;
         case SEARCHBOX:
           return AccessibilityRole.SEARCH;
-        case SLIDER:
-          return AccessibilityRole.ADJUSTABLE;
         case SPINBUTTON:
           return AccessibilityRole.SPINBUTTON;
         case SUMMARY:

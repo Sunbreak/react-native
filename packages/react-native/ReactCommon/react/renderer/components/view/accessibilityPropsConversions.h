@@ -374,8 +374,6 @@ inline std::string toString(const AccessibilityRole& accessibilityRole) {
       return "horizontalscrollview";
     case AccessibilityRole::Viewgroup:
       return "viewgroup";
-    case AccessibilityRole::Webview:
-      return "webview";
     case AccessibilityRole::Drawerlayout:
       return "drawerlayout";
     case AccessibilityRole::Slidingdrawer:
@@ -467,8 +465,6 @@ inline void fromRawValue(
       result = AccessibilityRole::Horizontalscrollview;
     } else if (string == "viewgroup") {
       result = AccessibilityRole::Viewgroup;
-    } else if (string == "webview") {
-      result = AccessibilityRole::Webview;
     } else if (string == "drawerlayout") {
       result = AccessibilityRole::Drawerlayout;
     } else if (string == "slidingdrawer") {
@@ -590,8 +586,6 @@ inline std::string toString(const Role& role) {
       return "searchbox";
     case Role::Separator:
       return "separator";
-    case Role::Slider:
-      return "slider";
     case Role::Spinbutton:
       return "spinbutton";
     case Role::Status:
@@ -735,8 +729,6 @@ inline void fromRawValue(
       result = Role::Searchbox;
     } else if (string == "separator") {
       result = Role::Separator;
-    } else if (string == "slider") {
-      result = Role::Slider;
     } else if (string == "spinbutton") {
       result = Role::Spinbutton;
     } else if (string == "status") {

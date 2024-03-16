@@ -95,7 +95,6 @@ RCT_MULTI_ENUM_CONVERTER(
       @"searchbox" : @(UIAccessibilityTraitSearchField),
       @"selected" : @(UIAccessibilityTraitSelected),
       @"separator" : @(UIAccessibilityTraitNone),
-      @"slider" : @(UIAccessibilityTraitNone),
       @"slidingdrawer" : @(UIAccessibilityTraitNone),
       @"spinbutton" : @(UIAccessibilityTraitNone),
       @"startsMedia" : @(UIAccessibilityTraitStartsMediaSession),
@@ -117,7 +116,6 @@ RCT_MULTI_ENUM_CONVERTER(
       @"treegrid" : @(UIAccessibilityTraitNone),
       @"treeitem" : @(UIAccessibilityTraitNone),
       @"viewgroup" : @(UIAccessibilityTraitNone),
-      @"webview" : @(UIAccessibilityTraitNone),
     }),
     UIAccessibilityTraitNone,
     unsignedLongLongValue)

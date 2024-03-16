@@ -229,7 +229,6 @@ enum class Role {
   Scrollbar,
   Searchbox,
   Separator,
-  Slider,
   Spinbutton,
   Status,
   Summary,
